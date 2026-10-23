@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.env
+.env.local
+*.p8
+*.p12
+*.mobileprovision
+logs/
+*.log
+.DS_Store
+ios/App/Pods/
+ios/App/App/public/
+ios/App/build/
+.cloudflared/
+coverage/
+browser-screenshots/

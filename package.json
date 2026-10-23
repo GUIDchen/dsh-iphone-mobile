@@ -1,0 +1,17 @@
+{
+  "name": "dsh-iphone-mobile",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "iPhone 远程控制本机 DeepSeek Harness：移动端网关 + PWA 层",
+  "scripts": {
+    "start": "node server/gateway.mjs",
+    "icons": "node scripts/make-icons.mjs",
+    "check": "node --check server/gateway.mjs && node scripts/check-stream.mjs --selftest",
+    "test": "node scripts/selftest-push.mjs && node scripts/selftest-webpush.mjs && node scripts/check-stream.mjs --selftest"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT"
+}
