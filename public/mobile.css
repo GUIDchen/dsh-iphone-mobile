@@ -1,0 +1,51 @@
+/* dsh-mobile-gateway 注入的移动端适配层。
+   ponytail: 只做通用安全区与触控修正，不硬编码 dsh 内部类名；
+   等真实设备反馈出具体痛点再加针对性规则，避免猜错 DOM 结构后白写。 */
+
+:root {
+  --dsh-safe-top: env(safe-area-inset-top, 0px);
+  --dsh-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --dsh-safe-left: env(safe-area-inset-left, 0px);
+  --dsh-safe-right: env(safe-area-inset-right, 0px);
+}
+
+/* iOS 上字号小于 16px 的输入控件会触发自动放大 */
+input,
+textarea,
+select,
+button {
+  font-size: max(16px, 1em);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  overscroll-behavior-y: contain;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  padding-left: var(--dsh-safe-left);
+  padding-right: var(--dsh-safe-right);
+  padding-bottom: var(--dsh-safe-bottom);
+}
+
+@media (max-width: 820px) {
+  /* 竖屏下尽量把横向滚动挡在可视区外，长代码与表格自行滚动 */
+  pre,
+  table {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 触摸目标不小于 44px */
+  button,
+  [role='button'],
+  a {
+    min-height: 44px;
+  }
+}
